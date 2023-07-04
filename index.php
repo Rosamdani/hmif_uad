@@ -17,14 +17,26 @@ include "koneksi.php";
         * {
             font-family: 'poppins';
         }
+	
+    .logo-container {
+      width: 80px; /* Ukuran lebar container */
+      height: 80px; /* Ukuran tinggi container */
+    }
+    
+    .logo-container img {
+      width: 100%; /* Ukuran lebar logo sesuai dengan container */
+      height: auto; /* Tinggi logo akan disesuaikan secara proporsional */
+    }
     </style>
 </head>
 
 <body class="bg-gray-200">
     <nav class="w-full h-28 shadow-lg fixed z-10 bg-white">
         <div class="flex justify-between h-full px-10 items-center text-xl">
-            <ul class="flex space-x-5">
-                <div class="logo"></div>
+			<div class="logo-container">
+							<img src="assets/logo.jpeg" alt="Logo">
+				</div>
+			<ul class="flex space-x-5">
                 <li class="font-bold"><a href="#">Home</a></li>
                 <li><a href="#">Bank Soal</a></li>
                 <li><a href="#">Alumni</a></li>
@@ -47,7 +59,7 @@ include "koneksi.php";
             if ($query->num_rows > 0) {
                 while ($row = mysqli_fetch_array($query)) {
                     if ($index == 0) {
-            ?>
+                    ?>
 
                         <form class="col-span-2 bg-white relative h-[400px]">
                             <input type="hidden" value="<?= $row['id_berita'] ?>" name="id">
@@ -66,7 +78,6 @@ include "koneksi.php";
                     } else {
                     ?>
 
-
                         <form class="bg-white relative h-[400px]">
                             <input type="hidden" value="<?= $row['id_berita'] ?>" name="id">
                             <img src="<?= $row['gambar'] ?>" class="w-full h-full bg-cover" alt="News">
@@ -80,7 +91,7 @@ include "koneksi.php";
 
                         </form>
 
-            <?php
+                    <?php
                     }
                     $index++;
                 }
@@ -88,7 +99,30 @@ include "koneksi.php";
 
             ?>
 
+            <!-- Penambahan konten berita -->
+            <form class="bg-white relative h-[400px]">
+                <input type="hidden" value="" name="id">
+                <img src="assets/piala.jpeg" class="w-full h-full bg-cover" alt="News">
+                <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
+                    <p class="text-2xl max-w-[90%] py-2">HMIF Organisasi Terbaik Prodi</p>
+                </div>
+                <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
+                    <button name="komen" type="submit" class="px-3 py-2 bg-gray-300">Komen</button>
+                    <button name="detail" type="submit" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
+                </div>
+            </form>
 
+            <form class="bg-white relative h-[400px]">
+                <input type="hidden" value="" name="id">
+                <img src="assets/KunjunganIndustri.jpeg" class="w-full h-full bg-cover" alt="News">
+                <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
+                    <p class="text-2xl max-w-[90%] py-2">HMIF Melaksanakan KI</p>
+                </div>
+                <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
+                    <button name="komen" type="submit" class="px-3 py-2 bg-gray-300">Komen</button>
+                    <button name="detail" type="submit" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
+                </div>
+            </form>
         </div>
     </section>
 
