@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
 
     <section class="w-full py-36 h-[100vh] flex items-center">
         <div class="w-[85%] mx-auto max-h-fit py-10 flex flex-col bg-white items-center">
-            <p>Pendataan Alumni</p>
+            <p>Upload Bank Soal</p>
             <?php if(isset($pesan)){
                 ?>
                 
