@@ -11,39 +11,49 @@ include "koneksi.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
-
-        * {
-            font-family: 'poppins';
-        }
-	
-    .logo-container {
-      width: 80px; /* Ukuran lebar container */
-      height: 80px; /* Ukuran tinggi container */
-    }
-    
-    .logo-container img {
-      width: 100%; /* Ukuran lebar logo sesuai dengan container */
-      height: auto; /* Tinggi logo akan disesuaikan secara proporsional */
-    }
-    </style>
+    <link rel="stylesheet" href="css.css">
 </head>
 
 <body class="bg-gray-200">
     <nav class="w-full h-28 shadow-lg fixed z-10 bg-white">
         <div class="flex justify-between h-full px-10 items-center text-xl">
 			<div class="logo-container">
-							<img src="assets/logo.jpeg" alt="Logo">
+					<img src="assets/logo.jpeg" alt="Logo">
 				</div>
-			<ul class="flex space-x-5">
-                <li class="font-bold"><a href="#">Home</a></li>
-                <li><a href="#">Bank Soal</a></li>
-                <li><a href="#">Alumni</a></li>
+            <div class="navbar">
+            <ul class="flex space-x-5">
+                <li class="font-bold"><a href="index.php">Home</a></li>
+                <div class="dropdown">
+                    <li><button class="dropbtn">Bank Soal</li>
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                    <a href="bank_soal.php">Lihat</a>
+                    <a href="upload_soal.php">Upload</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                        <li><button class="dropbtn">Alumni</li>
+                        <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                        <li><a href="alumni.php">Alumni</a></li>
+                        <a href="demis.php">Demisioner</a>
+                        </div>
+                    </div> 
                 <li><a href="#">Aspirasi</a></li>
-                <li><a href="#">Informatic Store</a></li>
+                <div class="dropdown">
+                        <li><button class="dropbtn">Informatics Store</li>
+                        <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                        <li><a href="produk.php">Produk</a></li>
+                        <a href="promo.php">Promo</a>
+                        </div>
+                    </div> 
                 <li><a href="#">Tentang Kami</a></li>
-            </ul>
+            </ul>              
+         </div>
             <a href="">Login</a>
         </div>
     </nav>
@@ -53,7 +63,7 @@ include "koneksi.php";
             <!--  PHP Untuk memanggil data news pada database  -->
             <?php
 
-            $sql = "SELECT * FROM berita";
+            $sql = "SELECT * FROM berita WHERE tampil = 0";
             $index = 0;
             $query = mysqli_query($koneksi, $sql);
             if ($query->num_rows > 0) {
@@ -98,6 +108,7 @@ include "koneksi.php";
             }
 
             ?>
+
         </div>
     </section>
 

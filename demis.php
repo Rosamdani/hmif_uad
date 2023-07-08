@@ -28,27 +28,49 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
-
-        * {
-            font-family: 'poppins';
-        }
-    </style>
+    <link rel="stylesheet" href="css.css">
 </head>
 
 <body class="bg-gray-200">
     <nav class="w-full h-28 shadow-lg fixed z-10 bg-white">
         <div class="flex justify-between h-full px-10 items-center text-xl">
+        <div class="logo-container">
+				<img src="assets/logo.jpeg" alt="Logo">
+			</div>    
+            <div class="navbar">
             <ul class="flex space-x-5">
-                <div class="logo"></div>
-                <li class="font-bold"><a href="#">Home</a></li>
-                <li><a href="#">Bank Soal</a></li>
-                <li><a href="#">Alumni</a></li>
+                <li><a href="index.php">Home</a></li>
+                <div class="dropdown">
+                    <li><button class="dropbtn">Bank Soal</li>
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                    <a href="bank_soal.php">Lihat</a></li>
+                    <li class="font-bold"><a href="upload_soal.php">Upload</a></li>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                        <li  class="font-bold"><button class="dropbtn">Alumni</li>
+                        <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                        <li><a href="alumni.php">Alumni</a></li>
+                        <li  class="font-bold"><a href="demis.php">Demisioner</a></li>
+                        </div>
+                    </div> 
                 <li><a href="#">Aspirasi</a></li>
-                <li><a href="#">Informatic Store</a></li>
+                <div class="dropdown">
+                        <li><button class="dropbtn">Informatics Store</li>
+                        <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                        <li><a href="produk.php">Produk</a></li>
+                        <a href="promo.php">Promo</a>
+                        </div>
+                    </div> 
                 <li><a href="#">Tentang Kami</a></li>
-            </ul>
+            </ul>              
+         </div>
             <a href="">Login</a>
         </div>
     </nav>
