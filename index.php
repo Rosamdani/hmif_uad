@@ -98,31 +98,6 @@ include "koneksi.php";
             }
 
             ?>
-
-            <!-- Penambahan konten berita -->
-            <form class="bg-white relative h-[400px]">
-                <input type="hidden" value="" name="id">
-                <img src="assets/piala.jpeg" class="w-full h-full bg-cover" alt="News">
-                <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
-                    <p class="text-2xl max-w-[90%] py-2">HMIF Organisasi Terbaik Prodi</p>
-                </div>
-                <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
-                    <button name="komen" type="submit" class="px-3 py-2 bg-gray-300">Komen</button>
-                    <button name="detail" type="submit" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
-                </div>
-            </form>
-
-            <form class="bg-white relative h-[400px]">
-                <input type="hidden" value="" name="id">
-                <img src="assets/KunjunganIndustri.jpeg" class="w-full h-full bg-cover" alt="News">
-                <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
-                    <p class="text-2xl max-w-[90%] py-2">HMIF Melaksanakan KI</p>
-                </div>
-                <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
-                    <button name="komen" type="submit" class="px-3 py-2 bg-gray-300">Komen</button>
-                    <button name="detail" type="submit" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
-                </div>
-            </form>
         </div>
     </section>
 
