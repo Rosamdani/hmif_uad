@@ -46,7 +46,7 @@ include "koneksi.php";
             $query = mysqli_query($koneksi, $sql);
             if ($query->num_rows > 0) {
                 while ($row = mysqli_fetch_array($query)) {
-                    if ($index == 0) {
+                    if ($index == 0) { // Konten pertama
             ?>
 
                         <form class="col-span-2 bg-white relative h-[400px]">
@@ -64,6 +64,7 @@ include "koneksi.php";
 
                     <?php
                     } else {
+                        // Konten kedua dan seterusnya akan berbentuk grid
                     ?>
 
 
@@ -81,7 +82,7 @@ include "koneksi.php";
                         </form>
 
             <?php
-                    }
+                    } 
                     $index++;
                 }
             }

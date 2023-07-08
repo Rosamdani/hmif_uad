@@ -42,10 +42,10 @@ if(isset($_POST['submit'])){
         <div class="flex justify-between h-full px-10 items-center text-xl">
             <ul class="flex space-x-5">
                 <div class="logo"></div>
-                <li class="font-bold"><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#">Bank Soal</a></li>
                 <li><a href="#">Alumni</a></li>
-                <li><a href="#">Aspirasi</a></li>
+                <li class="font-bold"><a href="#">Aspirasi</a></li>
                 <li><a href="#">Informatic Store</a></li>
                 <li><a href="#">Tentang Kami</a></li>
             </ul>
