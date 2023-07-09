@@ -50,7 +50,7 @@ if (isset($_POST['submit-berita'])) {
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
             echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-            $gambar = "assets/".basename($_FILES["fileToUpload"]["name"]);
+            $gambar = "assets/" . basename($_FILES["fileToUpload"]["name"]);
             $sql = "INSERT INTO berita (judul, gambar, deskripsi, tanggal) VALUES ('$judul', '$gambar', '$deskripsi', '$tanggal')";
             $query = mysqli_query($koneksi, $sql);
             if ($query) {
@@ -62,6 +62,19 @@ if (isset($_POST['submit-berita'])) {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-} else {
-    exit;
+} else if (isset($_POST['submit-edit'])) {
+    $judul = $_POST['judul'];
+    $deskripsi = $_POST['deskripsi'];
+    $tanggal = $_POST['tanggal'];
+    $id_berita = $_POST['id_berita'];
+
+    $sql = "UPDATE berita SET judul = '$judul', deskripsi = '$deskripsi', tanggal = '$tanggal' WHERE id_berita = '$id_berita'";
+    $query = mysqli_query($koneksi, $sql);
+    if ($query) {
+        header("location:daftar_berita.php?pesan=Berhasil mengedit berita");
+    } else {
+        header("location:daftar_berita.php?pesan=Gagal Mengedit Berita karena ".$koneksi->error);
+    }
+}else{
+    echo '<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">Halaman tidak ditemukan!</div>';
 }

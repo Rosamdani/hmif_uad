@@ -1,3 +1,23 @@
+<?php
+include 'koneksi.php';
+
+if (!isset($_GET['berita'])) {
+    echo '<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">Halaman tidak ditemukan!</div>';
+} else {
+    $berita = $_GET['berita'];
+    $query = mysqli_query($koneksi, "SELECT * FROM berita WHERE id_berita = '$berita'");
+    if ($query) {
+        while ($row = mysqli_fetch_array($query)) {
+            $judul = $row['judul'];
+            $deskripsi = $row['deskripsi'];
+            $tanggal = $row['tanggal'];
+        }
+    } else {
+        echo '<div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">Ups..Sepertinya ada kesalahan</div>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,36 +80,28 @@
                 <form method="POST" enctype="multipart/form-data" action="aksi_berita.php"
                     class="w-[98%] bg-white h-[90%] mx-auto my-5 rounded-md border-2 border-gray-300 shadow-md text-slate-600">
                     <div class="w-full border-b-2 border-gray-300 h-[60px] flex px-10 items-center text-xl">
-                        <p>Form penambahan berita</p>
+                        <p>Form edit berita</p>
                     </div>
                     <div class="w-full px-10 py-10 space-y-5">
                         <div class="form-input space-y-1">
-                            <a href="daftar_berita.php" class="px-5 py-1 rounded bg-gray-400 text-white">Lihat
-                                Berita</a>
-                        </div>
-                        <div class="form-input space-y-1">
                             <p>Judul Berita :</p>
-                            <input type="text" name="judul"
+                            <input type="text" name="judul" value="<?= $judul ?>"
                                 class="w-full border border-gray-400 h-[30px] px-3 shadow-md rounded outline-slate-600"
                                 placeholder="Masukkan judul berita...">
                         </div>
                         <div class="form-input space-y-1">
                             <p>Tanggal Berita :</p>
-                            <input type="date" name="tanggal"
+                            <input type="date" name="tanggal" value="<?= $tanggal ?>"
                                 class="w-full border border-gray-400 h-[30px] px-3 shadow-md rounded outline-slate-600">
                         </div>
                         <div class="form-input space-y-1">
+                            <input type="hidden" name="id_berita" value="<?=$row['id_berita']?>">
                             <p>Deskripsi :</p>
                             <textarea name="deskripsi" id=""
-                                class="w-full border border-gray-400 h-[100px] px-3 shadow-md rounded outline-slate-600"></textarea>
+                                class="w-full border border-gray-400 h-[100px] px-3 shadow-md rounded outline-slate-600"><?= $deskripsi ?></textarea>
                         </div>
                         <div class="form-input space-y-1">
-                            <p>Gambar :</p>
-                            <input name="fileToUpload" id="fileToUpload" type="file"
-                                class="w-full border border-gray-400 h-[30px] shadow-md rounded outline-slate-600">
-                        </div>
-                        <div class="form-input space-y-1">
-                            <input type="submit" name="submit-berita"
+                            <input type="submit" name="submit-edit"
                                 class="px-5 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold shadow-md rounded">
                         </div>
                     </div>

@@ -35,12 +35,12 @@ include 'koneksi.php';
                             class="fa-regular fa-newspaper"></i>
                         <p>Beranda</p>
                     </a></li>
-                <li class="w-full"><a href="#"
+                <li class="w-full"><a href="dashboard.php"
                         class="w-full py-2 flex px-5 space-x-3 items-center hover:bg-slate-500"><i
                             class="fa-regular fa-newspaper"></i>
                         <p>Berita</p>
                     </a></li>
-                <li class="w-full"><a href="admin_soal.php"
+                <li class="w-full"><a href="#"
                         class="w-full py-2 flex px-5 space-x-3 items-center hover:bg-slate-500"><i
                             class="fa-regular fa-newspaper"></i>
                         <p>Bank Soal</p>
@@ -63,21 +63,9 @@ include 'koneksi.php';
                 <form method="POST" enctype="multipart/form-data" action="aksi_berita.php"
                     class="w-[98%] bg-white h-[90%] mx-auto my-5 rounded-md border-2 border-gray-300 shadow-md text-slate-600">
                     <div class="w-full border-b-2 border-gray-300 h-[60px] flex px-10 items-center text-xl">
-                        <p>Daftar berita</p>
+                        <p>Daftar soal (Bank Soal)</p>
                     </div>
                     <div class="w-full px-10 py-10 space-y-5">
-                        <div class="form-input space-y-1">
-                            <a href="dashboard.php" class="px-5 py-1 rounded bg-gray-400 text-white">Tambah Berita</a>
-                        </div>
-                        <div class="form-input space-y-1">
-                            <?php if (isset($_GET['pesan'])) {
-                            ?>
-
-                            <p class="px-5 py-4 rounded-lg bg-yellow-400"><?= ($_GET['pesan']) ?></p>
-
-                            <?php
-                            } ?>
-                        </div>
                         <div class="relative overflow-y-auto shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left">
                                 <thead class="text-xs  uppercase bg-gray-50 ">
@@ -86,27 +74,27 @@ include 'koneksi.php';
                                             No
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Judul Berita
+                                            MATKUL
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Deskripsi
+                                            Tahun Ajaran
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Tanggal
+                                            Semester
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Gambar
+                                            File
                                         </th>
                                         <th scope="col" class="px-6 py-3 space-x-3">
-                                            <span class="sr-only">Edit</span>
+                                            <span class="sr-only">Action</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!--  PHP Untuk memanggil data news pada database  -->
+                                    <!--  PHP Untuk memanggil data soal pada database  -->
                                     <?php
                                     
-                                    $sql = 'SELECT * FROM berita';
+                                    $sql = 'SELECT * FROM soal';
                                     $index = 1;
                                     $query = mysqli_query($koneksi, $sql);
                                     if ($query->num_rows > 0) {
@@ -119,27 +107,27 @@ include 'koneksi.php';
                                             <?=$index++?>
                                         </th>
                                         <td class="px-6 py-4">
-                                            <?=$row['judul']?>
+                                            <?=$row['matkul']?>
                                         </td>
                                         <td class="px-6 py-4 max-w-[500px]">
-                                            <?=$row['deskripsi']?>
+                                            <?=$row['tahun']?>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <?=$row['tanggal']?>
+                                            <?=$row['semester']?>
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="<?=$row['gambar']?>"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Lihat
-                                                gambar</a>
+                                                soal</a>
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <a href="edit_berita.php?berita=<?=$row['id_berita']?>"
+                                            <a href="#"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                            <a href="hapus_berita.php?berita=<?=$row['id_berita']?>"
+                                            <a href="hapus_soal.php?soal=<?=$row['id_soal']?>"
                                                 class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>
 
-                                            <a href="tampil_berita.php?berita=<?=$row['id_berita']?>&status=<?=$row['tampil']?>"
-                                                class="font-medium text-green-600 dark:text-green-500 hover:underline"><?php if($row['tampil'] == 0){echo "Sembunyikan"; }else{ echo "Tampilkan"; }?></a>
+                                            <a href="verif_soal.php?berita=<?=$row['id_soal']?>&status=<?=$row['verifikasi']?>"
+                                                class="font-medium text-green-600 dark:text-green-500 hover:underline"><?php if($row['verifikasi'] == 0){echo "Verifikasi"; }?></a>
                                         </td>
                                     </tr>
 
